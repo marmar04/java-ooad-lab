@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class CharacterFrequencyCounter {
-    static void bubbleSort(int[] numberArray, char[] sentenceArray) {
+    static void numberSort(int[] numberArray, char[] sentenceArray) {
 	int n = numberArray.length;
 
 	for (int i = 0; i < n - 1; i++) {
@@ -70,7 +70,7 @@ public class CharacterFrequencyCounter {
 
 	// sort characters
 	characterSort(freq, sentenceArray);
-	bubbleSort(freq, sentenceArray);
+	numberSort(freq, sentenceArray);
 
 	// display characters
 	System.out.println("Character frequency (sorted):");
