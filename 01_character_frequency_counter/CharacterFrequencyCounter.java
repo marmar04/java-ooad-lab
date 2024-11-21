@@ -46,39 +46,51 @@ public class CharacterFrequencyCounter {
 	System.out.print("Enter a sentence: ");
 	String sentence = scan.nextLine();
 
+	// close scanner
+	scan.close();
+
 	// remove punctuation and whitespace
 	sentence = sentence.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+	// exit if there's no letters
+	if (sentence.trim().isEmpty()) {
+	    System.out.println("Sentence does not contain any letters");
+	    System.exit(0);
+	}
+	
+	// initialise frequency array
 	int[] freq = new int[sentence.length()];
 
 	// for debugging
 	//System.out.println(sentence);
 
-	char sentenceArray[] = sentence.toCharArray();
+	// character array for sorting
+	char sentenceCharArray[] = sentence.toCharArray();
 
-	// put into array of character:freq
+	// put frequency for each letter
 	for (int i = 0; i < sentence.length(); i++) {
 	    freq[i] = 1;
 
 	    for (int j = i + 1; j < sentence.length(); j++) {
-		if (sentenceArray[i] == sentenceArray[j]) {
+		if (sentenceCharArray[i] == sentenceCharArray[j]) {
 		    freq[i]++;
 
-		    // set sentenceArray to 0
-		    sentenceArray[j] = '0';
+		    // set sentenceCharArray to 0 if duplicate letter
+		    sentenceCharArray[j] = '0';
 		}
 	    }
 	}
 
 	// sort characters
-	characterSort(freq, sentenceArray);
-	numberSort(freq, sentenceArray);
+	characterSort(freq, sentenceCharArray);
+	numberSort(freq, sentenceCharArray);
 
 	// display characters
 	System.out.println("Character frequency (sorted):");
 
 	for (int i = 0; i < freq.length; i++) {
-	    if (sentenceArray[i] != ' ' && sentenceArray[i] != '0')
-		System.out.println(sentenceArray[i] + ": " + freq[i]);
+	    if (sentenceCharArray[i] != ' ' && sentenceCharArray[i] != '0')
+		System.out.println(sentenceCharArray[i] + ": " + freq[i]);
 	}
     }
 }
