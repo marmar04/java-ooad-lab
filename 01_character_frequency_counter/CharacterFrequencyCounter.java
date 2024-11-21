@@ -2,20 +2,21 @@ import java.util.*;
 
 public class CharacterFrequencyCounter {
     // sort character
-    static void characterSort(int[] numberArray, char[] sentenceArray) {
+    static void characterSort(int[] numberArray, char[] sentenceCharArray) {
 	int n = numberArray.length;
 	
 	for (int i = 0; i < n - 1; i++) {
 	    for (int j = 0; j < n - i - 1; j++)
-		if (sentenceArray[j] <= sentenceArray[j+1]) {
+		// swap characters by ascii value
+		if (sentenceCharArray[j] <= sentenceCharArray[j+1]) {
 		    
 		    // swap
 		    int temp = numberArray[j];
-		    char tempChar = sentenceArray[j];
+		    char tempChar = sentenceCharArray[j];
 		    numberArray[j] = numberArray[j+1];
-		    sentenceArray[j] = sentenceArray[j+1];
+		    sentenceCharArray[j] = sentenceCharArray[j+1];
 		    numberArray[j+1] = temp;
-		    sentenceArray[j+1] = tempChar;
+		    sentenceCharArray[j+1] = tempChar;
 		}
 	}
     }
